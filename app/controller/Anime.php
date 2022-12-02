@@ -33,7 +33,8 @@ class Anime extends Views {
 
         Views::sendData([
             "video" => $anime['video'],
-            "page" => $anime['pageCount']
+            "page" => $anime['pageCount'],
+            "cPage" => $page
         ]);
     }
 }

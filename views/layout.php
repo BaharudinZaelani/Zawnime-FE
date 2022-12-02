@@ -52,11 +52,17 @@
     <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
     <style>
         .navbar-nav li {
+            text-transform: uppercase;
             transition: 0.5s !important;
             margin-left: 12px;
         }
         .navbar-nav li:hover {
             background-color: #5C527F !important;
+        }
+        @media screen and ( max-width: 680px ) {
+            .navbar {
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            }
         }
     </style>
 
@@ -67,7 +73,7 @@
 
     <div class="wrp">
         <!-- navbar -->
-        <nav class="navbar bg-dark shadow-md navbar-expand-lg ">
+        <nav class="navbar py-4 shadow-md navbar-expand-lg ">
             <div class="container">
                 <a href="/" class="navbar-brand text-light">ZStream App</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -89,15 +95,15 @@
                             <a class="nav-link text-light" href="/anime">Anime</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="/listvideo">List All video</a>
-                        </li>
-                        <li class="nav-item">
-                                
+                            
                             <a class="nav-link text-light" href="/movie">Movie</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light bg-danger" href="#">Lapor Error</a>
+                            <a class="nav-link text-light" href="/listvideo">List All video</a>
                         </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link text-light bg-danger" href="#">Lapor Error</a>
+                        </li> -->
                     </ul>
                 </div>
             </div>

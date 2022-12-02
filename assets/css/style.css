@@ -62,3 +62,9 @@ button {
 .card {
     background-color: #f1f1f1 !important;
 }
+
+
+.z-row .image {
+    height: 180px;
+    overflow: hidden;
+}

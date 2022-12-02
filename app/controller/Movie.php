@@ -28,12 +28,13 @@ class Movie extends Views {
 
         $anime = AnimeLogic::pageShow($this->anime, 6, $page);
         if ( $anime['pageCount'] < $page ) {
-            App::redirect("/anime");
+            App::redirect("/movie");
         }
 
         Views::sendData([
             "video" => $anime['video'],
-            "page" => $anime['pageCount']
+            "page" => $anime['pageCount'],
+            "cPage" => $page
         ]);
     }
 }

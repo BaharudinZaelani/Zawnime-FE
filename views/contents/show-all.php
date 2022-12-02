@@ -14,6 +14,9 @@
     a:hover .floating-title {
         opacity: 1 !important;
     }
+    .z-row {
+        display: grid;
+    }
 </style>
 <?php 
 
@@ -24,7 +27,7 @@ $video = Views::$dataSend['video'];
     <div class="row">
         <!-- loop here -->
         <?php foreach( $video as $row) : ?>
-            <div class="col-md-4 mt-2">
+            <div class="col-md-4 mt-2 z-row">
                 <div class="card">
                     <a href="/show/<?= AnimeLogic::removeSpace($row['video']['title']); ?>" class="text-dark">
                         <div class="image text-center">
@@ -59,7 +62,7 @@ $video = Views::$dataSend['video'];
                     
                     <!-- loop here -->
                     <?php for( $i = 0; $i < Views::$dataSend['page']; $i++ ) : ?>
-                        <li class="page-item"><a class="page-link" href="/anime/page/<?= $i + 1; ?>"><?= $i + 1 ?></a></li>
+                        <li class="page-item <?= ( Views::$dataSend['cPage'] == $i + 1 ) ? "active" : "" ?>"><a class="page-link" href="/anime/page/<?= $i + 1; ?>"><?= $i + 1 ?></a></li>
                     <?php endfor;?>
                     
                 </ul>

@@ -29,7 +29,7 @@ class Home extends Views {
         }
 
         $resAnime = [];
-        for( $i = 0; $i < 6; $i++ ) {
+        for( $i = 0; $i < 3; $i++ ) {
             if ( !isset($anime[$i]) ) {
                 break;
             }
@@ -37,7 +37,7 @@ class Home extends Views {
         }
 
         $resMovie = [];
-        for( $i = 0; $i < 6; $i++ ) {
+        for( $i = 0; $i < 3; $i++ ) {
             if ( !isset($movie[$i]) ) {
                 break;
             }

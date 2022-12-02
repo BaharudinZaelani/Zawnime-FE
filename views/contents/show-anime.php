@@ -68,25 +68,7 @@ if ( !empty(Views::$dataSend['server']) ) {
 ?>
 <div class="container mt-3">
     <div class="row">
-      
-      
-      
-      
-        <div class="mb-3 col-md-12">
-            <div class="card scroll p-1">
-                <!-- Composite Start --> 
-                <div id="M588820ScriptRootC1341238"> 
-                </div> 
-                <script src="https://jsc.adskeeper.com/z/a/zawnime.rf.gd.1341238.js" async> 
-                </script> 
-                <!-- Composite End --> 
-                
-                
-            </div>
-        </div>
         
-      
-      
         <!-- streaming -->
         <?php 
         if ( isset($_POST['clearSession']) ) {
