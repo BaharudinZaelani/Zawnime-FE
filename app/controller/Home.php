@@ -47,7 +47,8 @@ class Home extends Views {
         Views::sendData([
             "anime" => $resAnime,
             "movie" => $resMovie,
-            "all" => $videos
+            "all" => $videos,
+            "latest" => AnimeLogic::getLatest()
         ]);
 
     }

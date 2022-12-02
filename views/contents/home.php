@@ -63,6 +63,61 @@
 #inner {
     height: 40vh;
 }
+
+/* item */
+.latest {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-gap: 12px;
+    justify-content: space-between;
+    align-items: baseline;
+    justify-items: stretch;
+    overflow: auto;
+}
+.latest a {
+    display: block;
+    color: black;
+}
+.latest .item:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.latest .item {
+    width: 100% !important;
+    display: flex;
+}
+
+.item {
+    position: relative;
+}
+.item img {
+    width: 180px;
+}
+.item .desc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 0;
+}
+.item .item-title,
+.item span
+{
+    padding: 6px;
+    color: #fff;
+
+}
+.item span {
+    border-radius: 0px 52px 52px 0px;
+    padding-right: 20px;
+}
+@media screen and ( max-width: 680px ) {
+    .latest {
+        grid-template-columns: repeat(auto-fill, 150px);
+    }
+    .item img {
+        width: 150px;
+    }
+}
 </style>
 
 <div>
@@ -85,6 +140,43 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">
+                    <div class="d-flex mt-2">
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-play-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"/>
+                            </svg>
+                        </div>
+                        <div class="mx-3">Latest Update</div>
+                    </div>
+                </h5>
+            </div>
+
+            <div class="card-body">
+                <div class="latest">
+
+                    <!-- loop -->
+                    <?php foreach ( Views::$dataSend['latest'] as $row ) : ?>
+                        <a class="item" href="/show/<?= AnimeLogic::removeSpace($row['title']) . "/" . explode(" ", $row['episode']['title'])[1] ?>">
+                            <div class="image">
+                                <img class="img-fluid" src="<?= $row['image'] ?>">
+                            </div>
+                            <div class="desc">
+                                <h6 class="item-title bg-secondary mb-3"><?= $row['title'] ?></h5>
+                                <span class="bg-secondary"><?= $row['episode']['title'] ?></span>
+                            </div>
+                        </a>
+
+                    <?php endforeach; ?>
+
+                </div>
             </div>
         </div>
     </div>

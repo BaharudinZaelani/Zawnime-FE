@@ -3,6 +3,13 @@
 
 class AnimeLogic {
 
+    static function getLatest() {
+        $url = API . "api/latest";
+        $result = file_get_contents($url);
+        $video = json_decode($result, true);
+        return $video;
+    }
+
     static function getAnime($key = ""){
         if ( !empty($key) ) {
             $url = API . "api/video/" . $key;
