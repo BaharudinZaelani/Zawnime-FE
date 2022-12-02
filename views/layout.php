@@ -111,15 +111,19 @@
 
         
         
-        <!--
-        <div class="mt-3">
-            <div class="container">
-                <div class="alert alert-warning">
-                    <strong>Hallo !</strong> Untuk beberapa video(anime), episode yang ditampilkan akan tidak sesuai, mohon maaf atas tidak nyamanannya, ini akan segera diperbaiki dalam waktu dekat X_X
+        <?php if ( isset($_COOKIE['yourcookie']) ) : ?>
+            <?php
+                $yourCookie = json_decode($_COOKIE['yourcookie'], true);
+            ?>
+            <div class="mt-3">
+                <div class="container">
+                    <div class="alert alert-warning">
+                        <strong>Hallo Kamu !</strong> Video Terakhir yang kamu tonton : <a href="<?= $yourCookie['link'] ?>"><?= $yourCookie['anime'] ?></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        -->
+        <?php endif;?>
+       
 
         <div class="mt-3">
 

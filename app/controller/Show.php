@@ -28,11 +28,14 @@ class Show extends Views {
                         break;
                     }
                 }
+
                 Views::sendData([
                     "anime" => $anime,
                     "server" => $dataEpisode,
                     "current_key" => $val[1],
                 ]);
+                
+                
 
                 // download file
                 if ( isset($val[2]) AND $val[2] == "download" ) {
@@ -84,6 +87,20 @@ class Show extends Views {
                         App::redirect("/");
                     }
                 }
+
+                // cookie remove
+                if ( isset($_COOKIE['yourcookie']) ) {
+                    unset($_COOKIE['yourcookie']); 
+                    setcookie('yourcookie', null, -1, '/');
+                }
+                
+                // set cookie
+                $dataCookie = json_encode([
+                    "anime" => $anime['video'][0]['title'] . " - " . $dataEpisode['title'],
+                    "link" => "/show/" . $anime['video'][0]['title'] . "/" . explode(" ", $dataEpisode['title'])[1]
+                ]);
+                setcookie('yourcookie', $dataCookie, time() + (10 * 365 * 24 * 60 * 60), "/");
+
                 return;
             }
             Views::sendData([
