@@ -1,0 +1,20 @@
+<?php 
+// publis
+// define("API", "https://zawapi.000webhostapp.com/");
+
+// devloy
+define("API", "http://127.0.0.1:3000/");
+
+
+// define("URI", "//zawnime.rf.gd/");
+define("URI", "//127.0.0.1:8089/");
+
+define("Z_PLAYER", "http://zstreamplayer.rf.gd/zawtube.php?eid=");
+define("APP_NAME", "ZStream App");
+define("PATH", $_SERVER['DOCUMENT_ROOT']);
+
+// Database
+define("HOST", "");
+define("USER", "");
+define("PASSWORD", "");
+define("DB_NAME", "");
