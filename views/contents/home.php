@@ -112,7 +112,7 @@
 }
 @media screen and ( max-width: 680px ) {
     .latest {
-        grid-template-columns: repeat(auto-fill, 150px);
+        grid-template-columns: 1fr 1fr;
     }
     .item img {
         width: 150px;
@@ -144,42 +144,54 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">
-                    <div class="d-flex mt-2">
-                        <div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-play-fill" viewBox="0 0 16 16">
-                                <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"/>
-                            </svg>
+    <!-- latest -->
+    <?php if ( isset(Views::$dataSend['latest']) ) { ?>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <div class="d-flex mt-2">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-collection-play-fill" viewBox="0 0 16 16">
+                                    <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm6.258-6.437a.5.5 0 0 1 .507.013l4 2.5a.5.5 0 0 1 0 .848l-4 2.5A.5.5 0 0 1 6 12V7a.5.5 0 0 1 .258-.437z"/>
+                                </svg>
+                            </div>
+                            <div class="mx-3">Latest Update</div>
                         </div>
-                        <div class="mx-3">Latest Update</div>
+                    </h5>
+                </div>
+
+                <div class="card-body">
+                    <div class="latest">
+
+                        <!-- loop -->
+                        <?php foreach ( Views::$dataSend['latest'] as $row ) : ?>
+                            <a class="item" href="/show/<?= AnimeLogic::removeSpace($row['title']) . "/" . explode(" ", $row['episode']['title'])[1] ?>">
+                                <div class="image">
+                                    <img class="img-fluid" src="<?= $row['image'] ?>">
+                                </div>
+                                <div class="desc">
+                                    <h6 class="item-title bg-secondary mb-3"><?= $row['title'] ?></h5>
+                                    <span class="bg-secondary"><?= $row['episode']['title'] ?></span>
+                                </div>
+                            </a>
+
+                        <?php endforeach; ?>
+
                     </div>
-                </h5>
-            </div>
-
-            <div class="card-body">
-                <div class="latest">
-
-                    <!-- loop -->
-                    <?php foreach ( Views::$dataSend['latest'] as $row ) : ?>
-                        <a class="item" href="/show/<?= AnimeLogic::removeSpace($row['title']) . "/" . explode(" ", $row['episode']['title'])[1] ?>">
-                            <div class="image">
-                                <img class="img-fluid" src="<?= $row['image'] ?>">
-                            </div>
-                            <div class="desc">
-                                <h6 class="item-title bg-secondary mb-3"><?= $row['title'] ?></h5>
-                                <span class="bg-secondary"><?= $row['episode']['title'] ?></span>
-                            </div>
-                        </a>
-
-                    <?php endforeach; ?>
-
                 </div>
             </div>
         </div>
-    </div>
+    <?php }else{ ?>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h1>Server Alternative digunakan !</h1>
+                    <span class="text-card"><b>Beberapa video akan error karena video dari server Alternative tidak sama dengan server Deffault !</b></span>
+                </div>
+            </div>
+        </div>
+    <?php }?>
 
     <!-- anime -->
     <div class="container mt-3" id="anime">

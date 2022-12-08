@@ -7,10 +7,14 @@ define("API", "http://127.0.0.1:3000/");
 
 
 // define("URI", "//zawnime.rf.gd/");
+// define("URI", "http://www.zawnime.fun/");
 define("URI", "//127.0.0.1:8089/");
 
-define("Z_PLAYER", "http://zstreamplayer.rf.gd/zawtube.php?eid=");
-define("APP_NAME", "ZStream App");
+// player
+define("BASE_VIDEO", "zawnimeplayer.000webhostapp.com");
+define("Z_PLAYER", "http://" . BASE_VIDEO . "/zawtube.php?eid=");
+// app
+define("APP_NAME", "ZawNIME");
 define("PATH", $_SERVER['DOCUMENT_ROOT']);
 
 // Database

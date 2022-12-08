@@ -16,6 +16,14 @@ input {
 button {
     border-radius: 0 !important;
 }
+.wrp {
+    position: relative !important;
+    z-index: 9999999999999999999 !important;
+    background-color: #16151d !important;
+}
+/* bg */
+
+
 .scroll {
     overflow: auto;
     /* display: flex; */
@@ -57,13 +65,36 @@ button {
 .text-bg-primary,
 .btn-primary
 {
-    background-color: #5C527F !important;
+    background-color: #4D4C7D !important;
+    border-color: #4D4C7D !important;
 }
+.btn-outline-primary:hover, .btn-outline-primary.active{
+    background-color: #4D4C7D !important;
+    border-color: #4D4C7D !important;
+}
+
+.bg-secondary, 
+.text-bg-secondary,
+.btn-secondary
+{
+    background-color: #827397 !important;
+    border-color: #827397 !important;
+}
+.btn-outline-secondary:hover, .btn-outline-secondary.active{
+    border-color: #827397 !important;
+    background-color: #827397 !important;
+}
+
+/* card */
 .card {
     background-color: #f1f1f1 !important;
 }
 
-
+/* helper */
+button {
+    outline: none !important;
+    border: none !important;
+}
 .z-row .image {
     height: 180px;
     overflow: hidden;

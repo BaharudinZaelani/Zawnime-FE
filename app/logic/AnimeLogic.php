@@ -27,6 +27,20 @@ class AnimeLogic {
             ];
         }
 
+        if( isset($anime['server']) ){
+            $rAnime = [
+                "video" => $anime['video'],
+                "server" => []
+            ];
+            foreach ( $anime['server'] as $row ) {
+                $rAnime['server'][] = [
+                    "title" => $row['title'],
+                    "link" => str_replace("zstreamplayer.rf.gd", BASE_VIDEO, $row['link']),
+                    "download" => $row['download']
+                ];
+            }
+        }
+
         return $anime;
     }
     
