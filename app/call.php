@@ -25,6 +25,7 @@ include PATH . "/app/core/Middleware.php";
 // include PATH . "/app/logic/Example.php";
 include PATH . "/app/logic/AnimeLogic.php";
 include PATH . "/app/logic/AddTrafic.php";
+include PATH . "/app/logic/ReloadSitemap.php";
 
 // Load Views (Front End)
 include "Views.php";
