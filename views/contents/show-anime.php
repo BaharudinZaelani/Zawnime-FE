@@ -62,37 +62,37 @@
 </style>
 <?php 
 
-$title = md5(Views::$dataSend['anime']['video'][0]['title']);
+    $title = md5(Views::$dataSend['anime']['video'][0]['title']);
 
-if ( !empty(Views::$dataSend['server']) ) {
-    // extension check
-    $episodeExplode = explode(".", Views::$dataSend['server']['link']);
-    $resExplo = end($episodeExplode);
+    if ( !empty(Views::$dataSend['server']) ) {
+        // extension check
+        $episodeExplode = explode(".", Views::$dataSend['server']['link']);
+        $resExplo = end($episodeExplode);
 
-    // web check
-    $episodeExplode = explode("/", Views::$dataSend['server']['link']);
-    $webCheck = $episodeExplode;
-    
-    // $episode = md5(Views::$dataSend['server']['title']);
-    // $vplayer = "?a=$title&e=$episode";
+        // web check
+        $episodeExplode = explode("/", Views::$dataSend['server']['link']);
+        $webCheck = $episodeExplode;
+        
+        // $episode = md5(Views::$dataSend['server']['title']);
+        // $vplayer = "?a=$title&e=$episode";
 
 
-    if ( $resExplo == "mp4") {
-        $link = Z_PLAYER . App::encrypt(Views::$dataSend['server']['link']);
+        if ( $resExplo == "mp4") {
+            $link = Z_PLAYER . App::encrypt(Views::$dataSend['server']['link']);
+        }
+        else if ( $webCheck[2] == "www.blogger.com" ) {
+            $link = Views::$dataSend['server']['link'];
+        }
+        else {
+            $link = Views::$dataSend['server']['link'];
+            $id = explode("id=", $link);
+            $id = $id[1];
+            $link = App::encrypt($id);
+            $link = "http://" . BASE_VIDEO . "/?id=" . $link;
+        }
+        
+        new AddTrafic("streaming_".AnimeLogic::removeSpace(Views::$dataSend['anime']['video'][0]['title']). ": " . Views::$dataSend['server']['title']);
     }
-    else if ( $webCheck[2] == "www.blogger.com" ) {
-        $link = Views::$dataSend['server']['link'];
-    }
-    else {
-        $link = Views::$dataSend['server']['link'];
-        $id = explode("id=", $link);
-        $id = $id[1];
-        $link = App::encrypt($id);
-        $link = "http://" . BASE_VIDEO . "/?id=" . $link;
-    }
-    
-    new AddTrafic("streaming_".AnimeLogic::removeSpace(Views::$dataSend['anime']['video'][0]['title']). ": " . Views::$dataSend['server']['title']);
-}
 
 ?>
 <div class="container mt-3">
@@ -116,13 +116,28 @@ if ( !empty(Views::$dataSend['server']) ) {
         <?php endif;?>
 
         <div class="col-md-12 mb-3 shadow">
-                 
-            <div class="ratio ratio-16x9">
-                <?php if ( !empty(Views::$dataSend['server']) ) { ?>
-                    <iframe src="<?= $link; ?>" title="Anime Video" allowfullscreen></iframe>
-                <?php }else{ ?>
-                    <img class="img-fluid img-thumbnail" alt="<?= APP_NAME . " - " . Views::$dataSend['anime']['video'][0]['title'] ?>" src="<?= Views::$dataSend['anime']['video'][0]['cover']; ?>" class="img-fluid">
-                <?php } ?>
+
+            <div class="card">
+                <?php if (!empty(Views::$dataSend['server'])) : ?>
+                    <div class="p-3">
+                        <h2><?= Views::$dataSend['anime']['video'][0]['title'] . " - " . Views::$dataSend['server']['title']  ?></h2>
+                        <div class="resolusi">
+                            <button class="btn btn-sm btn-primary" disabled>DEFAULT</button>
+                            <button class="btn btn-sm btn-primary" >360p</button>
+                            <button class="btn btn-sm btn-primary" >480p</button>
+                            <button class="btn btn-sm btn-primary" >720p</button>
+                            <button class="btn btn-sm btn-primary" >1080p</button>
+                        </div>
+                    </div>
+                <?php endif;?>
+                <div class="ratio ratio-16x9">
+                    <?php if ( !empty(Views::$dataSend['server']) ) { ?>
+                        <iframe src="<?= $link; ?>" title="Anime Video" allowfullscreen></iframe>
+                    <?php }else{ ?>
+                        <img class="img-fluid img-thumbnail" alt="<?= APP_NAME . " - " . Views::$dataSend['anime']['video'][0]['title'] ?>" src="<?= Views::$dataSend['anime']['video'][0]['cover']; ?>" class="img-fluid">
+                    <?php } ?>
+
+                </div>
             </div>
 
 
@@ -218,6 +233,7 @@ if ( !empty(Views::$dataSend['server']) ) {
         <div class="col-md-3 image">
             <img alt="<?= APP_NAME . " - " . Views::$dataSend['anime']['video'][0]['title'] ?>" src="<?= Views::$dataSend['anime']['video'][0]['image'] ?>" class="img-fluid img-thumbnail">
         </div>
+
         <div class="col-md">
             <div class="card">
                 <div class="card-header">
