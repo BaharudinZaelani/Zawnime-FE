@@ -110,6 +110,18 @@
     border-radius: 0px 52px 52px 0px;
     padding-right: 20px;
 }
+
+.list-group-item a:hover {
+    box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 8px;
+}
+.list-group-item a {
+    width: 100%;
+    background-color: #44415b;
+    display: block;
+    padding: 12px;
+    border-radius: 40px;
+}
+
 @media screen and ( max-width: 680px ) {
     .latest {
         grid-template-columns: 1fr 1fr;
@@ -357,12 +369,12 @@ $anime = Views::$dataSend['all'];
 <script type="text/javascript">
     const anim = <?php echo json_encode($anime); ?>;
     $(window).ready(() => {
-        $("#search").on("keypress", function (e) {
+        $("#search").on("keyup change", function (e) {
             $(".loading").removeClass("hidden");
             $('.list-group-item').remove();
-
+            
             let r = $(this).val().toLowerCase();
-            if ( e.which == 13 ) {
+            if ( r.length > 3 ) {
                 $.each(anim, (index, value) => {
                     if ( r.length > 4 ) {
                         let liveS = value.video.title.toLowerCase().indexOf(r);
