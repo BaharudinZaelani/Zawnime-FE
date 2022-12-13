@@ -1,9 +1,9 @@
 <?php 
 // publis
-define("API", "http://zawapi.000webhostapp.com/");
+// define("API", "http://zawapi.000webhostapp.com/");
 
 // devloy
-// define("API", "http://127.0.0.1:3000/");
+define("API", "http://127.0.0.1:3000/");
 
 
 // define("URI", "//zawnime.rf.gd/");

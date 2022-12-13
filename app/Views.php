@@ -66,6 +66,6 @@ class Views {
 
     // helper
     public static function assets($path){
-        return URI . "assets/" . $path;
+        return "/assets/" . $path;
     }
 }

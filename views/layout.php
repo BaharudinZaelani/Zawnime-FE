@@ -39,8 +39,8 @@ $req = explode("/", $_SERVER['REQUEST_URI']);
     <!-- video page -->
     <?php if ( !empty(substr($_SERVER['REQUEST_URI'], 1)) ) { ?>
         <meta content='https://i.ibb.co/9vMpknd/androzaw.jpg' property='og:image'/>
-        <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='description'/>
-        <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='og:description'/>
+        <meta content='<?= "Anime " . Views::$dataSend['anime']['video'][0]['title'] . ", " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='description'/>
+        <meta content='<?= "Anime " . Views::$dataSend['anime']['video'][0]['title'] . ", " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='og:description'/>
         <?php if ( !isset(Views::$dataSend['anime']['video'][0]['title']) ) { ?>
             <title><?= APP_NAME ?> - Streaming & Download Anime Subtitle Indonesia</title>        
         <?php }else { ?>
@@ -56,6 +56,8 @@ $req = explode("/", $_SERVER['REQUEST_URI']);
         <?php endif;?>
     <!-- home page -->
     <?php }else{ ?>
+        <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='description'/>
+        <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='og:description'/>
         <meta name="keywords" content="download anime, streaming anime, download anime subtitle indo, streaming anime sub indo">
         <title><?= APP_NAME ?> - Streaming & Download Anime Subtitle Indonesia</title>        
         <meta content='<?= APP_NAME ?>' property='og:title'/>
