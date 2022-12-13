@@ -59,12 +59,30 @@ $video = Views::$dataSend['video'];
         <div class="justify-content-center d-flex mt-3">
             <nav aria-label="Page navigation">
                 <ul class="pagination">
-                    
+                <?php if ( Views::$dataSend['cPage'] > 1 ) : ?>
+                        <li class="page-item pp">
+                            <a class="page-link" href="/movie/page/<?= Views::$dataSend['cPage'] - 1; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                    <path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php endif?>
                     <!-- loop here -->
                     <?php for( $i = 0; $i < Views::$dataSend['page']; $i++ ) : ?>
-                        <li class="page-item <?= ( Views::$dataSend['cPage'] == $i + 1 ) ? "active" : "" ?>"><a class="page-link" href="/anime/page/<?= $i + 1; ?>"><?= $i + 1 ?></a></li>
+                        <li class="page-item <?= ( Views::$dataSend['cPage'] == $i + 1 ) ? "active" : "" ?>"><a class="page-link" href="/movie/page/<?= $i + 1; ?>"><?= $i + 1 ?></a></li>
                     <?php endfor;?>
-                    
+                    <?php if ( Views::$dataSend['cPage'] < Views::$dataSend['page'] ) : ?>
+                        <li class="page-item pp">
+                            <a class="page-link" href="/movie/page/<?= Views::$dataSend['cPage'] + 1; ?>">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    <?php endif?>
                 </ul>
             </nav>
         </div>

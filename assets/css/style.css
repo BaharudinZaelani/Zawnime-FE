@@ -99,3 +99,9 @@ button {
     height: 180px;
     overflow: hidden;
 }
+.page-link {
+    border-radius: 0 !important;
+}
+.page-link svg{
+    margin-bottom: 5px;
+}
