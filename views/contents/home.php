@@ -180,7 +180,7 @@
                         <?php foreach ( Views::$dataSend['latest'] as $row ) : ?>
                             <a class="item" href="/show/<?= AnimeLogic::removeSpace($row['title']) . "/" . explode(" ", $row['episode']['title'])[1] ?>">
                                 <div class="image">
-                                    <img class="img-fluid" src="<?= $row['image'] ?>">
+                                    <img class="img-fluid" src="<?= $row['image'] ?>" alt="<?= APP_NAME . " - " . $row['title'] . " " . $row['episode']['title'] ?>">
                                 </div>
                                 <div class="desc">
                                     <h6 class="item-title bg-secondary mb-3"><?= $row['title'] ?></h5>

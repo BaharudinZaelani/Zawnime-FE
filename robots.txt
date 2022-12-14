@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+Crawl-delay: 120
+
+Sitemap: https://zawnime.fun/sitemap.xml
+
+User-agent: *
+Disallow: /anime
+
+User-agent: *
+Disallow: /movie
+
+User-agent: *
+Disallow: /listvideo

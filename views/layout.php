@@ -9,8 +9,6 @@ $req = explode("/", $_SERVER['REQUEST_URI']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="<?= Views::assets("img/icon.png"); ?>">
     <meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
-    <meta name="description" content="<?= APP_NAME ?> - Download Batch dan Streaming Anime Subtitle Indonesia resolusi 240p, 360p, 480p, 720p, format Mp4 dan MKV Lengkap." />
-
     <!-- style -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,13 +37,13 @@ $req = explode("/", $_SERVER['REQUEST_URI']);
     <!-- video page -->
     <?php if ( !empty(substr($_SERVER['REQUEST_URI'], 1)) ) { ?>
         <meta content='https://i.ibb.co/9vMpknd/androzaw.jpg' property='og:image'/>
-        <meta content='<?= "Anime " . Views::$dataSend['anime']['video'][0]['title'] . ", " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='description'/>
-        <meta content='<?= "Anime " . Views::$dataSend['anime']['video'][0]['title'] . ", " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='og:description'/>
+        <meta content='<?= Views::$dataSend['anime']['video'][0]['title'] . " - " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='description'/>
+        <meta content='<?= Views::$dataSend['anime']['video'][0]['title'] . " - " . explode(".", Views::$dataSend['anime']['video'][0]['sinopsis'])[0] . " ..." ?>' name='og:description'/>
         <?php if ( !isset(Views::$dataSend['anime']['video'][0]['title']) ) { ?>
             <title><?= APP_NAME ?> - Streaming & Download Anime Subtitle Indonesia</title>        
         <?php }else { ?>
-            <meta content='<?= "Streaming anime " . Views::$dataSend['anime']['video'][0]['title'] . " Sub Indo"?>' property='og:type'/>
-            <title><?= APP_NAME . " - " . Views::$dataSend['anime']['video'][0]['title'] ?></title>
+            <meta content='<?= "Streaming anime " . Views::$dataSend['anime']['video'][0]['title'] . ( isset($req[3]) ? " Episode " . $req[3] : "" )?> Sub Indo' property='og:type'/>
+            <title><?= APP_NAME . " - " . Views::$dataSend['anime']['video'][0]['title'] . " " . ( isset($req[3]) ? "Episode " . $req[3] : "" ) ?> Sub Indo</title>
             <meta content='<?= Views::$dataSend['anime']['video'][0]['cover']; ?>' property='og:image'/>
         <?php }?>
 
@@ -56,7 +54,7 @@ $req = explode("/", $_SERVER['REQUEST_URI']);
         <?php endif;?>
     <!-- home page -->
     <?php }else{ ?>
-        <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='description'/>
+        <meta name="description" content="<?= APP_NAME ?> - Download Batch dan Streaming Anime Subtitle Indonesia resolusi 240p, 360p, 480p, 720p, format Mp4 dan MKV Lengkap." />
         <meta content='Tempat lengkap nonton streaming & download anime subtitle indonesia update cepat dan lengkap tanpa iklan pop-up yang mengganggu.' name='og:description'/>
         <meta name="keywords" content="download anime, streaming anime, download anime subtitle indo, streaming anime sub indo">
         <title><?= APP_NAME ?> - Streaming & Download Anime Subtitle Indonesia</title>        
