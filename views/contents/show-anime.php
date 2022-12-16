@@ -87,8 +87,12 @@
             $link = Views::$dataSend['server']['link'];
             $id = explode("id=", $link);
             $id = $id[1];
-            $link = App::encrypt($id);
-            $link = "http://" . BASE_VIDEO . "/?id=" . $link;
+            if ( $id !== null ) {
+                $link = App::encrypt($id);
+                $link = "http://" . BASE_VIDEO . "/?id=" . $link;
+            }else {
+                $link = Views::$dataSend['server']['link']; 
+            }
         }
         
         new AddTrafic("streaming_".AnimeLogic::removeSpace(Views::$dataSend['anime']['video'][0]['title']). ": " . Views::$dataSend['server']['title']);

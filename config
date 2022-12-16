@@ -3,12 +3,12 @@
 // define("API", "http://zawapi.000webhostapp.com/");
 
 // devloy
-define("API", "http://127.0.0.1:3000/");
+define("API", "http://127.0.0.1:8089/");
 
 
 // define("URI", "//zawnime.rf.gd/");
 // define("URI", "http://www.zawnime.fun/");
-define("URI", "//127.0.0.1:8089/");
+define("URI", "//127.0.0.1:7000/");
 
 // player
 define("BASE_VIDEO", "zawnimeplayer.000webhostapp.com");
