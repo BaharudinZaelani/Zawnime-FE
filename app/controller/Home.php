@@ -11,13 +11,6 @@ class Home extends Views {
 
     function index(){
         $videos = AnimeLogic::getAnime();
-        
-        // generate sitemap
-        $rSitemap = [];
-        foreach ( $videos as $row ) {
-            $rSitemap[] = URI . "show/" . str_replace(" ", "_", strtolower($row['video']['title']));
-        }
-        ReloadSitemap::reload($rSitemap);
 
         if ( isset($videos['error']) ) {
             Views::setContentBody([

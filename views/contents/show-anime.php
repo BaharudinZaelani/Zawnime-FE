@@ -119,6 +119,21 @@
             </div>
         <?php endif;?>
 
+        <!-- keyword -->
+        <div class="col-md-12">
+            <div class="card shadow-sm">
+                <div class="key scroll card-body"> 
+                    <strong>Kata Kunci: </strong> 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?>">nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?></a>, 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="<?= Views::$dataSend['anime']['video'][0]['title'] ?> subtitle indonesia"><?= Views::$dataSend['anime']['video'][0]['title'] ?> subtitle indonesia</a>, 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="<?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo"><?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>, 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="download <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo">download <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>, 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="streaming <?= Views::$dataSend['anime']['video'][0]['title'] ?>">streaming <?= Views::$dataSend['anime']['video'][0]['title'] ?></a>, 
+                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo">nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>.
+                </div>
+            </div>
+        </div>
+
         <div class="col-md-12 mb-3 shadow">
 
             <div class="card">
@@ -179,14 +194,14 @@
                 <?php endif; ?>
             </div>
 
-            
+            <!-- epsidoe and download -->
             <div class="section-download">
                 <!-- episode list -->
                 <div class="episode-list">
                     <div class="mb-1">
                         <div class="card">
                             <div class="card-header">
-                                <h6 class="card-title">Choose Episode / Server </h6>
+                                <h6 class="card-title">Pilih Episode </h6>
                             </div>
                             <div class="card-body scroll eps-edit" style="max-height: 30vh">
                                 <!-- loop episode -->
@@ -203,30 +218,30 @@
                 </div>
 
                 <!-- download list -->
-                <?php if( !empty(Views::$dataSend['server']['download']) ) : ?>
-                    <div class="download-list">
-                        <div class="download-list mb-1">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h6 class="card-title">Download Video </h6>
-                                </div>
-                                <div class="card-body d-flex scroll dlSc">
+                <div class="download-list">
+                    <div class="download-list mb-1">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6 class="card-title">Download <?= Views::$dataSend['anime']['video'][0]['title'] ?> </h6>
+                            </div>
+                            <div class="card-body d-flex scroll dlSc">
+                                <?php if( !empty(Views::$dataSend['server']['download']) ) : ?>
                                     <?php foreach ( Views::$dataSend['server']['download'] as $key => $row ) : ?>
                                         <?php 
-                                            if ( isset($_POST['download' . $row['title']]) ) {
+                                            if ( isset($_POST['download' . $row['name']]) ) {
                                                 $dl = "https://androzaw.blogspot.com/p/jomblo-itu-nggak-mau-apa-apa-cuma-mau.html?url=" . $row['link'];
                                                 echo "<script>window.location.replace('$dl')</script>";
                                             }    
                                         ?>
                                         <form method="post">
-                                            <button style="height: 30px;" name="download<?= $row['title']?>" class="btn mx-1 btn-sm btn-success mb-1" data-bs-toggle="modal" data-bs-target="#download">Google Drive : <?= $key; ?></button>
+                                            <button style="height: 30px;" name="download<?= $row['name']?>" class="btn mx-1 btn-sm btn-success mb-1" data-bs-toggle="modal" data-bs-target="#download">Google Drive : <?= $row['name']; ?></button>
                                         </form>
                                     <?php endforeach; ?>
-                                </div>
+                                <?php endif;?>
                             </div>
                         </div>
                     </div>
-                <?php endif;?>
+                </div>
 
             </div>
 
@@ -268,31 +283,23 @@
                     </div>
                     <div class="p-2">
 
-                        <div><b>Sinopsis</b></div>
+                        <div><h5>Sinopsis <?= Views::$dataSend['anime']['video'][0]['title'] ?></h5></div>
                         <div>
                             <?php 
                                 $sinop = Views::$dataSend['anime']['video'][0]['sinopsis'];
                                 // replace new line
-                                $sinop = str_replace("\n", "<br>", $sinop);
+                                // $sinop = str_replace("\n", "<br>", $sinop);
+                                $sinop = explode("\n", $sinop);
                             ?>
-                            <p><?= $sinop; ?></p>
+                            <span>Released on <?= Views::$dataSend['anime']['video'][0]['updated_at'] ?></span>
+                            <?php foreach ( $sinop as $row ) : ?>
+                                <?php if ( preg_match('/\S/', $row) ) : ?>
+                                    <p><?= $row; ?></p>
+                                <?php endif;?>
+                            <?php endforeach; ?>
                         </div>
                     
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12 mt-3">
-            <div class="card shadow-sm">
-                <div class="key scroll card-body"> 
-                    <strong>Kata Kunci: </strong> 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?>">nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?></a>, 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="<?= Views::$dataSend['anime']['video'][0]['title'] ?> subtitle indonesia"><?= Views::$dataSend['anime']['video'][0]['title'] ?> subtitle indonesia</a>, 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="<?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo"><?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>, 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="download <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo">download <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>, 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="streaming <?= Views::$dataSend['anime']['video'][0]['title'] ?>">streaming <?= Views::$dataSend['anime']['video'][0]['title'] ?></a>, 
-                    <a href="<?= URI . substr($_SERVER['REQUEST_URI'], 1) ?>" title="nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo">nonton <?= Views::$dataSend['anime']['video'][0]['title'] ?> sub indo</a>.
                 </div>
             </div>
         </div>
